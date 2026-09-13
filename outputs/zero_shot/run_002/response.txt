@@ -1,0 +1,266 @@
+```turtle
+@prefix : <http://www.semanticweb.org/ontologies/greenhouse-technology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticweb.org/ontologies/greenhouse-technology>
+    rdf:type owl:Ontology ;
+    rdfs:label "Greenhouse Technology Ontology" ;
+    rdfs:comment "An ontology describing greenhouse structures, environmental control systems, sensors, actuators, and crop monitoring." .
+
+#################################################################
+#    Annotation Properties
+#################################################################
+
+rdfs:label rdf:type owl:AnnotationProperty .
+rdfs:comment rdf:type owl:AnnotationProperty .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+:hasComponent rdf:type owl:ObjectProperty ;
+    rdfs:label "has component" ;
+    rdfs:domain :Greenhouse ;
+    rdfs:range :GreenhouseSystem .
+
+:monitorsParameter rdf:type owl:ObjectProperty ;
+    rdfs:label "monitors parameter" ;
+    rdfs:domain :Sensor ;
+    rdfs:range :EnvironmentalParameter .
+
+:controlsDevice rdf:type owl:ObjectProperty ;
+    rdfs:label "controls device" ;
+    rdfs:domain :Controller ;
+    rdfs:range :Actuator .
+
+:receivesDataFrom rdf:type owl:ObjectProperty ;
+    rdfs:label "receives data from" ;
+    rdfs:domain :Controller ;
+    rdfs:range :Sensor .
+
+:regulatesParameter rdf:type owl:ObjectProperty ;
+    rdfs:label "regulates parameter" ;
+    rdfs:domain :Actuator ;
+    rdfs:range :EnvironmentalParameter .
+
+:installedIn rdf:type owl:ObjectProperty ;
+    rdfs:label "installed in" ;
+    rdfs:domain :GreenhouseSystem ;
+    rdfs:range :Greenhouse .
+
+:suppliesNutrientTo rdf:type owl:ObjectProperty ;
+    rdfs:label "supplies nutrient to" ;
+    rdfs:domain :FertigationSystem ;
+    rdfs:range :CultivatedCrop .
+
+:hasGlazingMaterial rdf:type owl:ObjectProperty ;
+    rdfs:label "has glazing material" ;
+    rdfs:domain :GreenhouseStructure ;
+    rdfs:range :GlazingMaterial .
+
+#################################################################
+#    Data Properties
+#################################################################
+
+:measuredValue rdf:type owl:DatatypeProperty ;
+    rdfs:label "measured value" ;
+    rdfs:domain :Sensor ;
+    rdfs:range xsd:float .
+
+:targetValue rdf:type owl:DatatypeProperty ;
+    rdfs:label "target value" ;
+    rdfs:domain :EnvironmentalParameter ;
+    rdfs:range xsd:float .
+
+:unitOfMeasure rdf:type owl:DatatypeProperty ;
+    rdfs:label "unit of measure" ;
+    rdfs:domain :EnvironmentalParameter ;
+    rdfs:range xsd:string .
+
+:powerRatingKW rdf:type owl:DatatypeProperty ;
+    rdfs:label "power rating in kilowatts" ;
+    rdfs:domain :Actuator ;
+    rdfs:range xsd:float .
+
+:samplingIntervalSeconds rdf:type owl:DatatypeProperty ;
+    rdfs:label "sampling interval in seconds" ;
+    rdfs:domain :Sensor ;
+    rdfs:range xsd:integer .
+
+:operationalStatus rdf:type owl:DatatypeProperty ;
+    rdfs:label "operational status" ;
+    rdfs:domain :GreenhouseSystem ;
+    rdfs:range xsd:string .
+
+#################################################################
+#    Classes
+#################################################################
+
+:Greenhouse rdf:type rdfs:Class ;
+    rdfs:label "Greenhouse" .
+
+:GreenhouseStructure rdf:type rdfs:Class ;
+    rdfs:subClassOf :Greenhouse ;
+    rdfs:label "Greenhouse Structure" .
+
+:GlazingMaterial rdf:type rdfs:Class ;
+    rdfs:label "Glazing Material" .
+
+:GreenhouseSystem rdf:type rdfs:Class ;
+    rdfs:label "Greenhouse System" .
+
+:EnvironmentalControlSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf :GreenhouseSystem ;
+    rdfs:label "Environmental Control System" .
+
+:ClimateControlComputer rdf:type rdfs:Class ;
+    rdfs:subClassOf :Controller ;
+    rdfs:label "Climate Control Computer" .
+
+:Controller rdf:type rdfs:Class ;
+    rdfs:subClassOf :GreenhouseSystem ;
+    rdfs:label "Controller" .
+
+:Sensor rdf:type rdfs:Class ;
+    rdfs:subClassOf :GreenhouseSystem ;
+    rdfs:label "Sensor" .
+
+:TemperatureSensor rdf:type rdfs:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "Temperature Sensor" .
+
+:HumiditySensor rdf:type rdfs:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "Humidity Sensor" .
+
+:CO2Sensor rdf:type rdfs:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "CO2 Sensor" .
+
+:PARSensor rdf:type rdfs:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "Photosynthetically Active Radiation Sensor" .
+
+:SoilMoistureSensor rdf:type rdfs:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "Soil Moisture Sensor" .
+
+:ElectricalConductivitySensor rdf:type rdfs:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "Electrical Conductivity Sensor" .
+
+:Actuator rdf:type rdfs:Class ;
+    rdfs:subClassOf :GreenhouseSystem ;
+    rdfs:label "Actuator" .
+
+:Ventilator rdf:type rdfs:Class ;
+    rdfs:subClassOf :Actuator ;
+    rdfs:label "Ventilator" .
+
+:HeatingUnit rdf:type rdfs:Class ;
+    rdfs:subClassOf :Actuator ;
+    rdfs:label "Heating Unit" .
+
+:EvaporativeCoolingPad rdf:type rdfs:Class ;
+    rdfs:subClassOf :Actuator ;
+    rdfs:label "Evaporative Cooling Pad" .
+
+:FoggingNozzle rdf:type rdfs:Class ;
+    rdfs:subClassOf :Actuator ;
+    rdfs:label "Fogging Nozzle" .
+
+:SupplementalLighting rdf:type rdfs:Class ;
+    rdfs:subClassOf :Actuator ;
+    rdfs:label "Supplemental Lighting" .
+
+:MotorizedScreen rdf:type rdfs:Class ;
+    rdfs:subClassOf :Actuator ;
+    rdfs:label "Motorized Screen" .
+
+:IrrigationSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf :GreenhouseSystem ;
+    rdfs:label "Irrigation System" .
+
+:DripIrrigationSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf :IrrigationSystem ;
+    rdfs:label "Drip Irrigation System" .
+
+:FertigationSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf :GreenhouseSystem ;
+    rdfs:label "Fertigation System" .
+
+:HydroponicSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf :GreenhouseSystem ;
+    rdfs:label "Hydroponic System" .
+
+:EnvironmentalParameter rdf:type rdfs:Class ;
+    rdfs:label "Environmental Parameter" .
+
+:AirTemperature rdf:type rdfs:Class ;
+    rdfs:subClassOf :EnvironmentalParameter ;
+    rdfs:label "Air Temperature" .
+
+:RelativeHumidity rdf:type rdfs:Class ;
+    rdfs:subClassOf :EnvironmentalParameter ;
+    rdfs:label "Relative Humidity" .
+
+:VaporPressureDeficit rdf:type rdfs:Class ;
+    rdfs:subClassOf :EnvironmentalParameter ;
+    rdfs:label "Vapor Pressure Deficit" .
+
+:CarbonDioxideConcentration rdf:type rdfs:Class ;
+    rdfs:subClassOf :EnvironmentalParameter ;
+    rdfs:label "Carbon Dioxide Concentration" .
+
+:PhotosyntheticPhotonFluxDensity rdf:type rdfs:Class ;
+    rdfs:subClassOf :EnvironmentalParameter ;
+    rdfs:label "Photosynthetic Photon Flux Density" .
+
+:CultivatedCrop rdf:type rdfs:Class ;
+    rdfs:label "Cultivated Crop" .
+
+#################################################################
+#    Individuals
+#################################################################
+
+:PolycarbonateSheet rdf:type owl:NamedIndividual , :GlazingMaterial ;
+    rdfs:label "Twin-wall Polycarbonate Glazing" .
+
+:VenloGreenhouseA rdf:type owl:NamedIndividual , :Greenhouse ;
+    rdfs:label "Venlo Research Greenhouse A" ;
+    :hasComponent :MainClimateComputer , :TempSensorZone1 , :RoofVentActuator .
+
+:MainClimateComputer rdf:type owl:NamedIndividual , :ClimateControlComputer ;
+    rdfs:label "Main Climate Computer" ;
+    :operationalStatus "Active" ;
+    :receivesDataFrom :TempSensorZone1 ;
+    :controlsDevice :RoofVentActuator .
+
+:Zone1Temperature rdf:type owl:NamedIndividual , :AirTemperature ;
+    rdfs:label "Zone 1 Air Temperature Parameter" ;
+    :targetValue "22.5"^^xsd:float ;
+    :unitOfMeasure "Degree Celsius" .
+
+:TempSensorZone1 rdf:type owl:NamedIndividual , :TemperatureSensor ;
+    rdfs:label "Zone 1 PT100 Temperature Sensor" ;
+    :monitorsParameter :Zone1Temperature ;
+    :measuredValue "23.1"^^xsd:float ;
+    :samplingIntervalSeconds 10 .
+
+:RoofVentActuator rdf:type owl:NamedIndividual , :Ventilator ;
+    rdfs:label "Ridge Continuous Vent Motor" ;
+    :regulatesParameter :Zone1Temperature ;
+    :powerRatingKW "1.5"^^xsd:float ;
+    :operationalStatus "Running" .
+
+:TomatoCropZone1 rdf:type owl:NamedIndividual , :CultivatedCrop ;
+    rdfs:label "Solanum lycopersicum (Tomato)" .
+
+:DripLineSystemA rdf:type owl:NamedIndividual , :DripIrrigationSystem ;
+    rdfs:label "Precision Drip Line A" ;
+    :operationalStatus "Standby" ;
+    :installedIn :VenloGreenhouseA .
+```
