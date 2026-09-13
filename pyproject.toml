@@ -12,6 +12,7 @@ dependencies = [
     "openai>=3.13.0",
     "pymupdf4llm>=1.28.2",
     "rdflib>=7.6.0",
+    "tiktoken>=0.14.0",
 ]
 
 [project.scripts]
