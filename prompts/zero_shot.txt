@@ -1,0 +1,1 @@
+Construct a greenhouse-technology ontology, only return the created ttl code. Make sure to label all classes as rdfs:Class, all individuals as owl:NamedIndividual, and all properties as owl:ObjectProperty, owl:DatatypeProperty, or owl:AnnotationProperty.

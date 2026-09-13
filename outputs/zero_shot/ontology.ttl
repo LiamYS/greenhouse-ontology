@@ -1,0 +1,316 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ght: <http://www.example.org/ontology/greenhouse-technology#> .
+
+<http://www.example.org/ontology/greenhouse-technology>
+    rdf:type owl:Ontology ;
+    rdfs:label "Greenhouse Technology Ontology" ;
+    rdfs:comment "An ontology defining greenhouse systems, climate control, sensors, actuators, and cultivation techniques." .
+
+#################################################################
+#    Annotation Properties
+#################################################################
+
+ght:definition rdf:type owl:AnnotationProperty ;
+    rdfs:label "definition" .
+
+ght:unitOfMeasure rdf:type owl:AnnotationProperty ;
+    rdfs:label "unit of measure" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+ght:hasStructure rdf:type owl:ObjectProperty ;
+    rdfs:label "has structure" ;
+    rdfs:domain ght:Greenhouse ;
+    rdfs:range ght:GreenhouseStructure .
+
+ght:hasCoveringMaterial rdf:type owl:ObjectProperty ;
+    rdfs:label "has covering material" ;
+    rdfs:domain ght:GreenhouseStructure ;
+    rdfs:range ght:CoveringMaterial .
+
+ght:hasClimateControlSystem rdf:type owl:ObjectProperty ;
+    rdfs:label "has climate control system" ;
+    rdfs:domain ght:Greenhouse ;
+    rdfs:range ght:ClimateControlSystem .
+
+ght:hasIrrigationSystem rdf:type owl:ObjectProperty ;
+    rdfs:label "has irrigation system" ;
+    rdfs:domain ght:Greenhouse ;
+    rdfs:range ght:IrrigationSystem .
+
+ght:hasLightingSystem rdf:type owl:ObjectProperty ;
+    rdfs:label "has lighting system" ;
+    rdfs:domain ght:Greenhouse ;
+    rdfs:range ght:LightingSystem .
+
+ght:hasSensor rdf:type owl:ObjectProperty ;
+    rdfs:label "has sensor" ;
+    rdfs:domain ght:Greenhouse ;
+    rdfs:range ght:Sensor .
+
+ght:hasActuator rdf:type owl:ObjectProperty ;
+    rdfs:label "has actuator" ;
+    rdfs:domain ght:ClimateControlSystem ;
+    rdfs:range ght:Actuator .
+
+ght:monitorsParameter rdf:type owl:ObjectProperty ;
+    rdfs:label "monitors parameter" ;
+    rdfs:domain ght:Sensor ;
+    rdfs:range ght:EnvironmentalParameter .
+
+ght:controlsParameter rdf:type owl:ObjectProperty ;
+    rdfs:label "controls parameter" ;
+    rdfs:domain ght:Actuator ;
+    rdfs:range ght:EnvironmentalParameter .
+
+ght:growsCrop rdf:type owl:ObjectProperty ;
+    rdfs:label "grows crop" ;
+    rdfs:domain ght:Greenhouse ;
+    rdfs:range ght:Crop .
+
+ght:usesCultivationMedium rdf:type owl:ObjectProperty ;
+    rdfs:label "uses cultivation medium" ;
+    rdfs:domain ght:Greenhouse ;
+    rdfs:range ght:GrowingMedium .
+
+#################################################################
+#    Datatype Properties
+#################################################################
+
+ght:hasValue rdf:type owl:DatatypeProperty ;
+    rdfs:label "has value" ;
+    rdfs:domain ght:EnvironmentalParameter ;
+    rdfs:range xsd:decimal .
+
+ght:hasTargetValueMin rdf:type owl:DatatypeProperty ;
+    rdfs:label "has target value minimum" ;
+    rdfs:domain ght:EnvironmentalParameter ;
+    rdfs:range xsd:decimal .
+
+ght:hasTargetValueMax rdf:type owl:DatatypeProperty ;
+    rdfs:label "has target value maximum" ;
+    rdfs:domain ght:EnvironmentalParameter ;
+    rdfs:range xsd:decimal .
+
+ght:hasSamplingIntervalSeconds rdf:type owl:DatatypeProperty ;
+    rdfs:label "has sampling interval in seconds" ;
+    rdfs:domain ght:Sensor ;
+    rdfs:range xsd:integer .
+
+ght:installationDate rdf:type owl:DatatypeProperty ;
+    rdfs:label "installation date" ;
+    rdfs:domain ght:GreenhouseEquipment ;
+    rdfs:range xsd:dateTime .
+
+ght:modelNumber rdf:type owl:DatatypeProperty ;
+    rdfs:label "model number" ;
+    rdfs:domain ght:GreenhouseEquipment ;
+    rdfs:range xsd:string .
+
+ght:powerConsumptionWatts rdf:type owl:DatatypeProperty ;
+    rdfs:label "power consumption in watts" ;
+    rdfs:domain ght:Actuator ;
+    rdfs:range xsd:decimal .
+
+#################################################################
+#    Classes
+#################################################################
+
+ght:Greenhouse rdf:type rdfs:Class ;
+    rdfs:label "Greenhouse" ;
+    rdfs:comment "A structure with walls and roof made chiefly of transparent material in which plants are grown under controlled conditions." .
+
+ght:GreenhouseStructure rdf:type rdfs:Class ;
+    rdfs:label "Greenhouse Structure" ;
+    rdfs:comment "The physical framework and architectural enclosure of a greenhouse." .
+
+ght:GlasshouseStructure rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:GreenhouseStructure ;
+    rdfs:label "Glasshouse Structure" .
+
+ght:PolyhouseStructure rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:GreenhouseStructure ;
+    rdfs:label "Polyhouse Structure" .
+
+ght:CoveringMaterial rdf:type rdfs:Class ;
+    rdfs:label "Covering Material" ;
+    rdfs:comment "Material used to glaze or enclose the greenhouse framework." .
+
+ght:GreenhouseEquipment rdf:type rdfs:Class ;
+    rdfs:label "Greenhouse Equipment" ;
+    rdfs:comment "Physical hardware, devices, and machinery utilized in greenhouse operation." .
+
+ght:ClimateControlSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:GreenhouseEquipment ;
+    rdfs:label "Climate Control System" ;
+    rdfs:comment "System responsible for regulating internal microclimate parameters." .
+
+ght:HeatingSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:ClimateControlSystem ;
+    rdfs:label "Heating System" .
+
+ght:CoolingSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:ClimateControlSystem ;
+    rdfs:label "Cooling System" .
+
+ght:VentilationSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:ClimateControlSystem ;
+    rdfs:label "Ventilation System" .
+
+ght:IrrigationSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:GreenhouseEquipment ;
+    rdfs:label "Irrigation System" ;
+    rdfs:comment "System for supplying controlled water and nutrients to crops." .
+
+ght:DripIrrigationSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:IrrigationSystem ;
+    rdfs:label "Drip Irrigation System" .
+
+ght:HydroponicSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:IrrigationSystem ;
+    rdfs:label "Hydroponic System" .
+
+ght:LightingSystem rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:GreenhouseEquipment ;
+    rdfs:label "Lighting System" ;
+    rdfs:comment "Artificial supplemental lighting for photoperiod control or assimilation." .
+
+ght:Sensor rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:GreenhouseEquipment ;
+    rdfs:label "Sensor" ;
+    rdfs:comment "A device that detects and measures physical properties in the greenhouse environment." .
+
+ght:TemperatureSensor rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Sensor ;
+    rdfs:label "Temperature Sensor" .
+
+ght:HumiditySensor rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Sensor ;
+    rdfs:label "Humidity Sensor" .
+
+ght:CO2Sensor rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Sensor ;
+    rdfs:label "Carbon Dioxide Sensor" .
+
+ght:PARSensor rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Sensor ;
+    rdfs:label "Photosynthetically Active Radiation Sensor" .
+
+ght:SubstrateMoistureSensor rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Sensor ;
+    rdfs:label "Substrate Moisture Sensor" .
+
+ght:Actuator rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:GreenhouseEquipment ;
+    rdfs:label "Actuator" ;
+    rdfs:comment "A mechanical or electrical device that executes control actions to alter environmental conditions." .
+
+ght:ExhaustFan rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Actuator ;
+    rdfs:label "Exhaust Fan" .
+
+ght:VentMotor rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Actuator ;
+    rdfs:label "Vent Motor" .
+
+ght:ThermalScreenMotor rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Actuator ;
+    rdfs:label "Thermal Screen Motor" .
+
+ght:MistingNozzle rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Actuator ;
+    rdfs:label "Misting Nozzle" .
+
+ght:DosingPump rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:Actuator ;
+    rdfs:label "Fertigation Dosing Pump" .
+
+ght:EnvironmentalParameter rdf:type rdfs:Class ;
+    rdfs:label "Environmental Parameter" ;
+    rdfs:comment "Physical or chemical state variables of the greenhouse atmosphere or root zone." .
+
+ght:AirTemperature rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:EnvironmentalParameter ;
+    rdfs:label "Air Temperature" .
+
+ght:RelativeHumidity rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:EnvironmentalParameter ;
+    rdfs:label "Relative Humidity" .
+
+ght:VaporPressureDeficit rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:EnvironmentalParameter ;
+    rdfs:label "Vapor Pressure Deficit (VPD)" .
+
+ght:CarbonDioxideConcentration rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:EnvironmentalParameter ;
+    rdfs:label "CO2 Concentration" .
+
+ght:LightIntensity rdf:type rdfs:Class ;
+    rdfs:subClassOf ght:EnvironmentalParameter ;
+    rdfs:label "Light Intensity" .
+
+ght:Crop rdf:type rdfs:Class ;
+    rdfs:label "Crop" ;
+    rdfs:comment "Cultivated plant grown within the greenhouse." .
+
+ght:GrowingMedium rdf:type rdfs:Class ;
+    rdfs:label "Growing Medium" ;
+    rdfs:comment "Substrate or solution supporting root growth and nutrient exchange." .
+
+#################################################################
+#    Named Individuals
+#################################################################
+
+ght:PolycarbonateSheet rdf:type owl:NamedIndividual , ght:CoveringMaterial ;
+    rdfs:label "Twin-wall Polycarbonate Sheet" .
+
+ght:DiffuseGlass rdf:type owl:NamedIndividual , ght:CoveringMaterial ;
+    rdfs:label "Diffuse Horticultural Glass" .
+
+ght:RockwoolSlab rdf:type owl:NamedIndividual , ght:GrowingMedium ;
+    rdfs:label "Rockwool Substrate Slab" .
+
+ght:CocoCoirSlab rdf:type owl:NamedIndividual , ght:GrowingMedium ;
+    rdfs:label "Coco Coir Slab" .
+
+ght:SolanumLycopersicum rdf:type owl:NamedIndividual , ght:Crop ;
+    rdfs:label "Tomato (Solanum lycopersicum)" .
+
+ght:LactucaSativa rdf:type owl:NamedIndividual , ght:Crop ;
+    rdfs:label "Lettuce (Lactuca sativa)" .
+
+ght:AirTempParam_Zone1 rdf:type owl:NamedIndividual , ght:AirTemperature ;
+    rdfs:label "Zone 1 Air Temperature Parameter" ;
+    ght:hasValue "22.5"^^xsd:decimal ;
+    ght:hasTargetValueMin "18.0"^^xsd:decimal ;
+    ght:hasTargetValueMax "24.0"^^xsd:decimal .
+
+ght:VPDParam_Zone1 rdf:type owl:NamedIndividual , ght:VaporPressureDeficit ;
+    rdfs:label "Zone 1 Vapor Pressure Deficit Parameter" ;
+    ght:hasValue "0.95"^^xsd:decimal ;
+    ght:hasTargetValueMin "0.80"^^xsd:decimal ;
+    ght:hasTargetValueMax "1.20"^^xsd:decimal .
+
+ght:Sensor_Temp_01 rdf:type owl:NamedIndividual , ght:TemperatureSensor ;
+    rdfs:label "Air Temperature Sensor Alpha-01" ;
+    ght:modelNumber "PT100-GH" ;
+    ght:hasSamplingIntervalSeconds 30 ;
+    ght:monitorsParameter ght:AirTempParam_Zone1 .
+
+ght:VentMotor_Roof_01 rdf:type owl:NamedIndividual , ght:VentMotor ;
+    rdfs:label "Roof Ridge Vent Motor #1" ;
+    ght:modelNumber "RW45-Ridder" ;
+    ght:powerConsumptionWatts "370.0"^^xsd:decimal ;
+    ght:controlsParameter ght:AirTempParam_Zone1 .
+
+ght:GreenhouseUnit_Alpha rdf:type owl:NamedIndividual , ght:Greenhouse ;
+    rdfs:label "Smart Greenhouse Unit Alpha" ;
+    ght:hasStructure ght:PolyhouseStructure ;
+    ght:hasSensor ght:Sensor_Temp_01 ;
+    ght:growsCrop ght:SolanumLycopersicum ;
+    ght:usesCultivationMedium ght:RockwoolSlab .
