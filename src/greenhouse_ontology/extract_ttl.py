@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 def remove_fence(text: str) -> str:
     lines = text.splitlines()
 
@@ -19,7 +18,6 @@ def remove_fence(text: str) -> str:
 
     turtle = "\n".join(lines).strip()
     return f"{turtle}\n" if turtle else ""
-
 
 def extract_ttl(input_path: str | Path, output_path: str | Path) -> str:
     input_path = Path(input_path)

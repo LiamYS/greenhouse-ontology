@@ -2,7 +2,6 @@ from pathlib import Path
 
 from rdflib import Graph
 
-
 def validate(path: str | Path) -> Graph:
     path = Path(path)
 

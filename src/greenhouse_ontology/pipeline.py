@@ -7,7 +7,6 @@ from greenhouse_ontology.extract_ttl import extract_ttl
 from greenhouse_ontology.generate import DEFAULT_MODEL, generate
 from greenhouse_ontology.validate import validate
 
-
 def run_pipeline(
     prompt_path: str | Path,
     output_dir: str | Path,
@@ -25,7 +24,6 @@ def run_pipeline(
 
     return validate(ontology_path)
 
-
 def main() -> None:
     if len(sys.argv) not in {3, 4}:
         raise SystemExit(
@@ -36,7 +34,6 @@ def main() -> None:
     model = sys.argv[3] if len(sys.argv) == 4 else DEFAULT_MODEL
     graph = run_pipeline(sys.argv[1], sys.argv[2], model)
     print(f"Valid Turtle ontology ({len(graph)} triples)")
-
 
 if __name__ == "__main__":
     main()

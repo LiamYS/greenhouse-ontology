@@ -1,0 +1,220 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/ontology/gh-greenhouse#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# Classes
+ex:Greenhouse
+    a owl:Class ;
+    rdfs:label "Greenhouse" ;
+    rdfs:comment "A structure designed to control environmental conditions for plant cultivation." .
+
+ex:ControlledEnvironment
+    a owl:Class ;
+    rdfs:label "Controlled Environment" ;
+    rdfs:comment "A broader category encompassing greenhouses and other controlled environments." .
+
+ex:GreenhouseType
+    a owl:Class ;
+    rdfs:label "Greenhouse Type" ;
+    rdfs:comment "Classification of greenhouses based on design and function." .
+
+ex:PassiveGreenhouse
+    a owl:Class ;
+    rdfs:label "Passive Greenhouse" ;
+    rdfs:comment "A greenhouse that relies on natural sunlight and ventilation." .
+
+ex:ActiveGreenhouse
+    a owl:Class ;
+    rdfs:label "Active Greenhouse" ;
+    rdfs:comment "A greenhouse equipped with artificial lighting and climate control systems." .
+
+ex:ClimateControlSystem
+    a owl:Class ;
+    rdfs:label "Climate Control System" ;
+    rdfs:comment "Systems used to regulate temperature, humidity, and CO2 levels in a greenhouse." .
+
+ex:TemperatureRegulator
+    a owl:Class ;
+    rdfs:label "Temperature Regulator" ;
+    rdfs:comment "Devices that maintain optimal temperature within the greenhouse." .
+
+ex:HumidityController
+    a owl:Class ;
+    rdfs:Label "Humidity Controller" ;
+    rdfs:comment "Devices that manage moisture levels in the greenhouse." .
+
+ex:CO2Injector
+    a owl:Class ;
+    rdfs:label "CO2 Injector" ;
+    rdfs:comment "Devices that introduce CO2 to enhance plant growth." .
+
+ex:PlantCultivation
+    a owl:Class ;
+    rdfs:label "Plant Cultivation" ;
+    rdfs:comment "The process of growing plants within a greenhouse environment." .
+
+ex:Crop
+    a owl:Class ;
+    rdfs:label "Crop" ;
+    rdfs:comment "Types of plants cultivated in greenhouses." .
+
+ex:SoilType
+    a owl:Class ;
+    rdfs:label "Soil Type" ;
+    rdfs:comment "Types of soil used for growing plants in greenhouses." .
+
+ex:IrrigationSystem
+    a owl:Class ;
+    rdfs:label "Irrigation System" ;
+    rdfs:comment "Systems for delivering water to plants in greenhouses." .
+
+ex:GreenhouseMaterial
+    a owl:Class ;
+    rdfs:label "Greenhouse Material" ;
+    rdfs:comment "Materials used in constructing greenhouses." .
+
+ex:Glass
+    a owl:Class ;
+    rdfs:label "Glass" ;
+    rdfs:comment "Material used for greenhouse walls and roofs." .
+
+ex:PlasticFilm
+    a owl:Class ;
+    rdfs:label "Plastic Film" ;
+    rdfs:comment "Material used for greenhouse coverings." .
+
+ex:EnergyEfficiency
+    a owl:Class ;
+    rdfs:label "Energy Efficiency" ;
+    rdfs:comment "Features of greenhouses designed to minimize energy consumption." .
+
+ex:SolarReflectiveCoating
+    a owl:Class ;
+    rdfs:label "Solar Reflective Coating" ;
+    rdfs:comment "Coatings applied to reduce heat absorption in greenhouses." .
+
+# Individuals
+ex:Greenhouse1
+    a ex:Greenhouse ;
+    rdfs:label "Greenhouse 1" ;
+    ex:hasType ex:PassiveGreenhouse ;
+    ex:hasMaterial ex:Glass ;
+    ex:hasEnergyEfficiency ex:SolarReflectiveCoating .
+
+ex:Greenhouse2
+    a ex:Greenhouse ;
+    rdfs:label "Greenhouse 2" ;
+    ex:hasType ex:ActiveGreenhouse ;
+    ex:hasClimateControl ex:TemperatureRegulator ;
+    ex:hasClimateControl ex:HumidityController .
+
+# Properties
+ex:hasType
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range ex:GreenhouseType .
+
+ex:hasMaterial
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range ex:GreenhouseMaterial .
+
+ex:hasClimateControl
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range ex:ClimateControlSystem .
+
+ex:hasCrop
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range ex:Crop .
+
+ex:hasSoilType
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range ex:SoilType .
+
+ex:hasIrrigationSystem
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range ex:IrrigationSystem .
+
+ex:hasEnergyEfficiency
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range ex:EnergyEfficiency .
+
+ex:hasCO2Level
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:integer .
+
+ex:hasTemperature
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:integer .
+
+ex:hasHumidity
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:integer .
+
+ex:hasPlantCultivationMethod
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range ex:PlantCultivation .
+
+ex:madeOf
+    a owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseMaterial ;
+    rdfs:range ex:Greenhouse .
+
+ex:supports
+    a owl:ObjectProperty ;
+    rdfs:domain ex:Crop ;
+    rdfs:range ex:Greenhouse .
+
+# Datatype Properties
+ex:hasCO2Level
+    a owl:DatatypeProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "The CO2 concentration level in parts per million (ppm) within the greenhouse." .
+
+ex:hasTemperature
+    a owl:DatatypeProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "The average temperature in degrees Celsius (°C) within the greenhouse." .
+
+ex:hasHumidity
+    a owl:DatatypeProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "The average humidity percentage within the greenhouse." .
+
+ex:hasArea
+    a owl:DatatypeProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "The area of the greenhouse in square meters (m²)." .
+
+# Annotation Properties
+ex:description
+    a owl:AnnotationProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:string .
+
+ex:manufacturer
+    a owl:AnnotationProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:string .
+
+ex:yearBuilt
+    a owl:AnnotationProperty ;
+    rdfs:domain ex:Greenhouse ;
+    rdfs:range xsd:integer .

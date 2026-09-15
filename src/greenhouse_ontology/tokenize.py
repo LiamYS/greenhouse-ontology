@@ -3,7 +3,6 @@ from pathlib import Path
 
 import tiktoken
 
-
 def main(input_path: str | Path) -> None:
     text = Path(input_path).read_text(encoding="utf-8")
     # encoding = tiktoken.get_encoding("o200k_base")
@@ -11,7 +10,6 @@ def main(input_path: str | Path) -> None:
     token_count = len(encoding.encode(text))
 
     print(token_count)
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Count tokens in a text file.")
