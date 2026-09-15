@@ -1,0 +1,82 @@
+Here’s a structured summary of the key topics and concepts from your provided index, focusing on **soilless cultivation, greenhouse management, and environmental control** in protected horticulture:
+
+---
+
+### **Key Themes and Concepts**
+
+#### **1. Soilless Cultivation**
+- **Substrate Types**:
+  - **Rockwool** (174)
+  - **Vermiculite** (175)
+  - **Other substrates** (174–175, e.g., coco coir, peat, perlite, etc.)
+- **Characteristics**:
+  - **Texture** (246–247): Affects water retention and aeration.
+  - **Chemical properties** (168–169): pH, nutrient availability, and salinity.
+- **Management**:
+  - **Water potential** (180–181): Critical for plant health (e.g., permanent wilting point (PWP) 181–182, readily available water (RAW) 182).
+  - **Water measurement**: Tensiometers (182–183), time domain reflectometry (TDR) (182, 183, 192).
+  - **Irrigation**: Progressive vs. non-progressive systems (206), input-output models (204–205).
+  - **Salinity control** (176–177): Essential for substrate longevity and plant health.
+
+---
+
+#### **2. Greenhouse Environmental Control**
+- **Light Management**:
+  - **Solar radiation** (14–16, 28–29): Diffused vs. direct, optimization (35–37).
+  - **Plastic/glasshouse transmissivity** (32–34, 52–54): Affects energy balance and crop growth.
+  - **Light interception** (108–109): Maximization via greenhouse orientation (77–79).
+  - **Photosynthesis** (96–97): Light use efficiency (109–111).
+- **Temperature Regulation**:
+  - **Thermal inertia** (38–39): Materials like rockwool or thermal shields (58).
+  - **Ventilation**: Natural (136) vs. forced (144–145), pad-and-fan systems (145).
+  - **Humidity control** (151–152): Fogging (146–148), misting (146–148).
+  - **Vapour pressure deficit (VPD)** (25–26): Critical for transpiration and crop health.
+- **Air Renewal**:
+  - **Anti-insect screens** (143, 274): Reduce pest entry.
+  - **Air circulation** (84–86): Convection/forced ventilation (141–143).
+- **Salinity and Water Stress**:
+  - **Soil water depletion** (181–182): Field capacity (FC) vs. PWP.
+  - **Crop water stress index** (275): Monitoring via tensiometers or TDR.
+
+---
+
+#### **3. Tomato Cultivation (Example)**
+- **Key Focus Areas**:
+  - **Light**: PAR (photosynthetically active radiation) (19, 272), optimization (35–37).
+  - **Temperature**: Management (150–151), thermal effects (136–137).
+  - **Respiration**: Postharvest (240–241), ethylene production (243).
+  - **Quality**: Ripening (241–243), traceability (247–248).
+
+---
+
+#### **4. Spanish Protected Horticulture**
+- **Specific Practices**:
+  - **Solanaceae (tomatoes/peppers)** (263–264): Common crops in Spain.
+  - **Storage/Postharvest**: High/low temperature management (2–3, 8).
+  - **Residue management**: Glasshouse cleaning (236–237).
+
+---
+
+### **Practical Applications**
+- **Optimization**:
+  - **Glasshouse orientation** (34–35, 77–79): Aligns with solar radiation (zenith angle 267).
+  - **Proportional-integral-derivative (PI) control** (207–208): Automates light/temperature adjustments.
+- **Energy Efficiency**:
+  - **Solar radiation use** (109–111): Maximize diffused radiation (110–111).
+  - **Thermal shields** (58): Reduce heat loss (117–121).
+- **Pest Management**:
+  - **White fly** (221–222): Screenhouses (144) and insecticidal barriers (274).
+
+---
+### **Key Equations/Metrics**
+- **Water Potential** (180–181): Critical for plant stress assessment.
+- **VPD** (25–26): Links to transpiration and crop growth.
+- **Thermal Integral** (268–269): Sum of daily temperature deviations.
+
+---
+### **Critical Considerations**
+- **Substrate Depletion**: Monitor RAW/PWP to prevent nutrient deficiencies.
+- **Light Quality**: Balance direct/diffused radiation for optimal photosynthesis.
+- **Energy Balance**: Ventilation and thermal management reduce costs.
+
+This framework ensures efficient soilless cultivation and greenhouse management in protected horticulture.

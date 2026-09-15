@@ -1,0 +1,169 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/ontology/gh-greenhouse#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# Classes
+ex:GreenhouseTechnology rdfs:Class ;
+    rdfs:label "Greenhouse Technology" ;
+    rdfs:comment "A general class representing all technologies used in greenhouse cultivation." .
+
+ex:GreenhouseComponent rdfs:Class ;
+    rdfs:label "Greenhouse Component" ;
+    rdfs:comment "A part or subsystem within a greenhouse technology." .
+
+ex:ClimateControlSystem rdfs:Class ;
+    rdfs:label "Climate Control System" ;
+    rdfs:comment "Systems designed to regulate temperature, humidity, and CO₂ levels in greenhouses." .
+
+ex:LightingSystem rdfs:Class ;
+    rdfs:label "Lighting System" ;
+    rdfs:comment "Systems that provide artificial lighting to supplement natural light in greenhouses." .
+
+ex:IrrigationSystem rdfs:Class ;
+    rdfs:label "Irrigation System" ;
+    rdfs:comment "Systems for delivering water to plants in greenhouses." .
+
+ex:PestControlSystem rdfs:Class ;
+    rdfs:label "Pest Control System" ;
+    rdfs:comment "Systems for managing pests and diseases in greenhouse environments." .
+
+ex:EnergyEfficiencySystem rdfs:Class ;
+    rdfs:label "Energy Efficiency System" ;
+    rdfs:comment "Systems aimed at reducing energy consumption in greenhouse operations." .
+
+ex:SoilManagementSystem rdfs:Class ;
+    rdfs:Label "Soil Management System" ;
+    rdfs:comment "Systems for optimizing soil health and nutrient management in greenhouses." .
+
+ex:AutomationSystem rdfs:Class ;
+    rdfs:label "Automation System" ;
+    rdfs:comment "Systems for automating greenhouse operations, such as monitoring and control." .
+
+# Subclasses of GreenhouseTechnology
+ex:HydroponicTechnology ex:GreenhouseTechnology ;
+    rdfs:subClassOf ex:GreenhouseTechnology .
+
+ex:AeroponicTechnology ex:GreenhouseTechnology ;
+    rdfs:subClassOf ex:GreenhouseTechnology .
+
+ex:TraditionalGreenhouseTechnology ex:GreenhouseTechnology ;
+    rdfs:subClassOf ex:GreenhouseTechnology .
+
+# Individuals (Examples)
+ex:LEDLightingSystem owl:NamedIndividual ;
+    rdfs:label "LED Lighting System" ;
+    rdfs:comment "A modern lighting system using LEDs for energy-efficient greenhouse lighting." .
+
+ex:GreenhouseAutomation ex:AutomationSystem ;
+    rdfs:label "Greenhouse Automation System" ;
+    rdfs:comment "A system that automates temperature, humidity, and CO₂ control via sensors and actuators." .
+
+ex:DripIrrigationSystem ex:IrrigationSystem ;
+    rdfs:label "Drip Irrigation System" ;
+    rdfs:comment "A system that delivers water directly to plant roots using drip emitters." .
+
+# Properties
+ex:hasComponent owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:GreenhouseComponent ;
+    rdfs:comment "Relates a greenhouse technology to its components." .
+
+ex:regulates ex:ClimateControlSystem owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:ClimateControlSystem ;
+    rdfs:comment "Indicates that a greenhouse technology regulates climate parameters." .
+
+ex:providesLighting ex:LightingSystem owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:LightingSystem ;
+    rdfs:comment "Indicates that a greenhouse technology includes a lighting system." .
+
+ex:usesEnergy ex:EnergyEfficiencySystem owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:EnergyEfficiencySystem ;
+    rdfs:comment "Indicates that a greenhouse technology incorporates energy-efficient systems." .
+
+ex:managesPests ex:PestControlSystem owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:PestControlSystem ;
+    rdfs:comment "Indicates that a greenhouse technology includes pest control measures." .
+
+ex:managesSoil ex:SoilManagementSystem owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:SoilManagementSystem ;
+    rdfs:comment "Indicates that a greenhouse technology includes soil management practices." .
+
+ex:usesAutomation ex:AutomationSystem owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:AutomationSystem ;
+    rdfs:comment "Indicates that a greenhouse technology employs automation systems." .
+
+ex:waterSupply ex:IrrigationSystem owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:IrrigationSystem ;
+    rdfs:comment "Indicates that a greenhouse technology includes an irrigation system." .
+
+ex:hasType owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:HydroponicTechnology ;
+    rdfs:comment "Indicates the type of greenhouse technology (e.g., hydroponic, aeroponic)." .
+
+ex:hasTechnologyType owl:ObjectProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range ex:TraditionalGreenhouseTechnology ;
+    rdfs:comment "Indicates the type of greenhouse technology (e.g., traditional, modern)." .
+
+ex:hasTechnologySpecifications owl:DatatypeProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Provides specific details about the greenhouse technology." .
+
+ex:manufacturer owl:DatatypeProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Identifies the manufacturer of the greenhouse technology." .
+
+ex:yearInnovated owl:DatatypeProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Indicates the year the technology was innovated." .
+
+ex:energyEfficiencyRating owl:DatatypeProperty ;
+    rdfs:domain ex:EnergyEfficiencySystem ;
+    rdfs:range xsd:float ;
+    rdfs:comment "Quantifies the energy efficiency rating of the system." .
+
+ex:waterConsumptionRate owl:DatatypeProperty ;
+    rdfs:domain ex:IrrigationSystem ;
+    rdfs:range xsd:float ;
+    rdfs:comment "Quantifies the water consumption rate of the irrigation system." .
+
+ex:lightIntensity owl:DatatypeProperty ;
+    rdfs:domain ex:LightingSystem ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Quantifies the light intensity provided by the lighting system." .
+
+ex:hasPestControlMethod owl:ObjectProperty ;
+    rdfs:domain ex:PestControlSystem ;
+    rdfs:range ex:PestControlMethod ;
+    rdfs:comment "Indicates the pest control methods used in the system." .
+
+ex:hasSoilType owl:ObjectProperty ;
+    rdfs:domain ex:SoilManagementSystem ;
+    rdfs:range ex:SoilType ;
+    rdfs:comment "Indicates the type of soil used in the system." .
+
+# Annotation Properties
+ex:description owl:AnnotationProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Provides a detailed description of the technology." .
+
+ex:developedBy owl:AnnotationProperty ;
+    rdfs:domain ex:GreenhouseTechnology ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Indicates the organization or individual responsible for developing the technology." .
