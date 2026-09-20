@@ -1,0 +1,5 @@
+You are analyzing a document that has been divided into chunks.
+For each chunk:
+1. Extract an ontology in TTL format from the following text. Only return the created TTL code. Make sure to label all classes as `rdfs:Class`, all individuals as `owl:NamedIndividual`, and all properties as `owl:ObjectProperty`, `owl:DatatypeProperty`, or `owl:AnnotationProperty`.
+2. Note how these connect to previous chunks if applicable.
+3. Maintain a coherent understanding of the document as it progresses.
